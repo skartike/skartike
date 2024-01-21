@@ -1,1 +1,52 @@
+from instabot import Bot
+my_bot=Bot()
+#login
+my_bot.login(username="gov_ind6514",password='@ks1234')
+#follow a user
+my_bot.follow("_kartikey_san_")
+#for Multiple users to follow we use follow_users
+#my_bot.follow_users(["_kartikey_san_"])
+#for unfollowing the non followers
+my_bot.unfollow_non_followers()
+#upload an image
+my_bot.upload_photo("C:/Users/dell/Pictures/Screenshots/Screenshot (90).png",caption="I love Saturo gojo")
+#send message to Instagram user
+my_bot.send_message("Hello Kartik! How are you","_kartikey_san_")
+import time;
+time.sleep(6)
+#like a post
+try:
+  my_bot.like_user("_kartikey_san_",amount=4,filtration=False)
+except Exception:
+    print(Exception)
 
+time.sleep(2)    
+#comment
+try:
+  user_id = my_bot.get_user_id_from_username("_kartikey_san_")
+  media_id = my_bot.get_user_id_from_username(user_id, 1)
+  my_bot.comment(media_id(0),"This is very nice. I like it:")
+except Exception:
+   print(Exception)
+
+time.sleep(2)
+#get list of followers of anyone
+followers_list = my_bot.get_user_followers("_kartikey_san_")
+#get list of following 
+following_list = my_bot.get_user_following("_kartikey_san_")
+#get username and userid of each follower in tarun following list
+for count, each_follower in enumerate(followers_list):
+    if count > 4:
+        continue
+    time.sleep(5)
+    print(my_bot.get_username_from_user_id(each_follower))
+#in this we will get username and id of each person whom tarun is following
+for count1, each_follow in enumerate(following_list):
+    if count1 > 4:
+        continue
+    time.sleep(5)
+    print(my_bot.get_username_from_user_id(each_follow))
+
+    # for logout of the id
+my_bot.logout()
+    
