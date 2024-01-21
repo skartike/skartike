@@ -49,4 +49,3 @@ for count1, each_follow in enumerate(following_list):
 
     # for logout of the id
 my_bot.logout()
-    
